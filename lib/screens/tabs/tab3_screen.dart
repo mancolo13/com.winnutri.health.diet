@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import '../../theme/app_theme.dart';
 
-class Tab3Screen extends StatefulWidget {
+class Tab3Screen extends StatelessWidget {
   const Tab3Screen({super.key});
 
   @override
-  State<Tab3Screen> createState() => _Tab3ScreenState();
-}
-
-class _Tab3ScreenState extends State<Tab3Screen> {
-  int _counter = 0;
-
-  @override
   Widget build(BuildContext context) {
+    final recipes = [
+      {'name': 'Протеиновый боул с лососем', 'cals': '520 ккал', 'prot': '38г белка', 'time': '20 мин'},
+      {'name': 'Греческий салат с фетой и киноа', 'cals': '380 ккал', 'prot': '18г белка', 'time': '15 мин'},
+      {'name': 'Овсянка с лесными ягодами и семенами', 'cals': '410 ккал', 'prot': '22г белка', 'time': '10 мин'},
+    ];
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('WinNutri • Recipes'),
@@ -22,108 +21,21 @@ class _Tab3ScreenState extends State<Tab3Screen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              padding: const EdgeInsets.all(24.0),
-              decoration: BoxDecoration(
-                color: AppTheme.surfaceColor,
-                borderRadius: BorderRadius.circular(24.0),
-                border: Border.all(
-                  color: AppTheme.primaryColor.withValues(alpha: 0.3),
-                  width: 1.5,
-                ),
-              ),
-              child: Column(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(16.0),
-                    decoration: BoxDecoration(
-                      color: AppTheme.primaryColor.withValues(alpha: 0.15),
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Icon(
-                      Icons.restaurant,
-                      size: 48,
-                      color: AppTheme.primaryColor,
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  const Text(
-                    'Prep',
-                    style: TextStyle(
-                      fontSize: 32,
-                      fontWeight: FontWeight.w900,
-                      color: Colors.white,
-                    ),
-                  ),
-                  const SizedBox(height: 6),
-                  Text(
-                    'min',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.white.withValues(alpha: 0.7),
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  const SizedBox(height: 24),
-                  ElevatedButton.icon(
-                    onPressed: () {
-                      setState(() => _counter++);
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('Cook выполнено! (Счетчик: \$$_counter)'),
-                          duration: const Duration(seconds: 1),
-                          backgroundColor: AppTheme.primaryColor,
-                        ),
-                      );
-                    },
-                    icon: const Icon(Icons.bolt, color: Colors.black),
-                    label: const Text('Cook'),
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: const Size.fromHeight(50),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 20),
-            Container(
-              padding: const EdgeInsets.all(20.0),
-              decoration: BoxDecoration(
-                color: AppTheme.cardColor,
-                borderRadius: BorderRadius.circular(20.0),
-              ),
+            const Text('Рекомендованные блюда', style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 12),
+            ...recipes.map((r) => Container(
+              margin: const EdgeInsets.only(bottom: 12),
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(color: AppTheme.cardColor, borderRadius: BorderRadius.circular(14)),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Активность',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Всего взаимодействий:',
-                        style: TextStyle(color: Colors.white.withValues(alpha: 0.7)),
-                      ),
-                      Text(
-                        '\$$_counter',
-                        style: const TextStyle(
-                          color: AppTheme.secondaryColor,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
-                      ),
-                    ],
-                  ),
+                  Text(r['name']!, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15)),
+                  const SizedBox(height: 6),
+                  Text('${r["cals"]} • ${r["prot"]} • Время: ${r["time"]}', style: const TextStyle(color: AppTheme.primaryColor, fontSize: 12)),
                 ],
               ),
-            ),
+            )),
           ],
         ),
       ),
