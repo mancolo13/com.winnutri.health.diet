@@ -26,9 +26,9 @@ class Tab4Screen extends StatelessWidget {
                 children: [
                   Icon(Icons.timer_outlined, color: AppTheme.primaryColor, size: 36),
                   SizedBox(height: 8),
-                  Text('Интервальное голодание 16:8', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
+                  Text('Intermittent Fasting 16:8', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
                   SizedBox(height: 6),
-                  Text('Прошло 14 ч 20 мин • Осталось 1 ч 40 мин до окна еды', style: TextStyle(color: Colors.white70, fontSize: 13)),
+                  Text('14h 20m elapsed • 1h 40m left until eating window', style: TextStyle(color: Colors.white70, fontSize: 13)),
                 ],
               ),
             ),

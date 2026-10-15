@@ -7,9 +7,9 @@ class Tab2Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final macros = [
-      {'name': 'Белки', 'val': '138 / 165 г', 'pct': 0.84, 'color': Colors.redAccent},
-      {'name': 'Углеводы', 'val': '162 / 220 г', 'pct': 0.74, 'color': Colors.orangeAccent},
-      {'name': 'Жиры', 'val': '48 / 65 г', 'pct': 0.74, 'color': Colors.yellowAccent},
+      {'name': 'Protein', 'val': '138 / 165 g', 'pct': 0.84, 'color': Colors.redAccent},
+      {'name': 'Carbs', 'val': '162 / 220 g', 'pct': 0.74, 'color': Colors.orangeAccent},
+      {'name': 'Fats', 'val': '48 / 65 g', 'pct': 0.74, 'color': Colors.yellowAccent},
     ];
 
     return Scaffold(
@@ -31,7 +31,7 @@ class Tab2Screen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text('Баланс макронутриентов (БЖУ)', style: TextStyle(color: AppTheme.primaryColor, fontWeight: FontWeight.bold, fontSize: 16)),
+                  const Text('Macronutrient Balance', style: TextStyle(color: AppTheme.primaryColor, fontWeight: FontWeight.bold, fontSize: 16)),
                   const SizedBox(height: 16),
                   ...macros.map((m) => Padding(
                     padding: const EdgeInsets.only(bottom: 14.0),
